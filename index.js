@@ -1,6 +1,15 @@
 $(document).ready(function() {
-    for (let index = 1; index < 12; index++) {
-        var dragItem = document.querySelector(`#player${index}`);
+    var players = $('.player__item');
+    var playersArray = [];
+    Object.keys(players).map((key) => {
+        if (key < (players.length)) {
+            playersArray.push(players[key])
+        }
+    });
+
+    playersArray.forEach(function droppable(player) {
+        // var dragItem = document.querySelector(`#player${index}`);
+        var dragItem = player;
         var container = document.querySelector("#playground");
 
         var active = false;
@@ -20,7 +29,6 @@ $(document).ready(function() {
         container.addEventListener("mousemove", drag, false);
 
         function dragStart(e) {
-            console.log("start");
             if (e.type === "touchstart") {
                 initialX = e.touches[0].clientX - xOffset;
                 initialY = e.touches[0].clientY - yOffset;
@@ -35,7 +43,6 @@ $(document).ready(function() {
         }
 
         function dragEnd(e) {
-            console.log("end");
             initialX = currentX;
             initialY = currentY;
 
@@ -43,7 +50,6 @@ $(document).ready(function() {
         }
 
         function drag(e) {
-            console.log("drag");
             if (active) {
 
                 e.preventDefault();
@@ -64,19 +70,18 @@ $(document).ready(function() {
         }
 
         function setTranslate(xPos, yPos, el) {
-            console.log("setTranslatesetTranslate");
             el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
         }
-    }
+    })
 });
 
 //When mouseover the player, show card and change box-shadow color
-// $(".player__item").on("mouseover", function() {
-//     $(this).find(".player__item--card").css("display", "flex");
-//     //$(this).(".player__item").css("box-shadow", "0 0 30px blue");
-// });
+$(".player__item").on("mouseover", function() {
+    $(this).find(".player__item--card").css("display", "flex");
+    //$(this).(".player__item").css("box-shadow", "0 0 30px blue");
+});
 
-// //When mouseout the player, hidden card and change box-shadow color
-// $(".player__item").on("mouseout", function() {
-//     $(this).find(".player__item--card").css("display", "none");
-// });
+//When mouseout the player, hidden card and change box-shadow color
+$(".player__item").on("mouseout", function() {
+    $(this).find(".player__item--card").css("display", "none");
+});
