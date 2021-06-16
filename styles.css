@@ -12,6 +12,18 @@ body {
     position: absolute;
 }
 
+@media only screen and (max-width: 768px) {
+    .field {
+        top: 10vh;
+        left: 35vw;
+        width: 100vw;
+        height: 90vh;
+        background: url(https://4.bp.blogspot.com/-JiJEc7lH1Is/UHJs3kn261I/AAAAAAAADYA/gQRAxHK2q_w/s1600/tileable_old_school_video_game_grass.jpg);
+        background-size: 30%;
+        position: absolute;
+    }
+}
+
 .field .field__box {
     width: 90%;
     height: 90%;
@@ -151,7 +163,7 @@ body {
 
 .field .field__box .player__item--card {
     position: absolute;
-    top: -380%;
+    top: -250%;
     background-color: #9c1737;
     font-size: 0.7em;
     color: #325082;
